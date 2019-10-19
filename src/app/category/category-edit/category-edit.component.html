@@ -1,0 +1,46 @@
+<section id="category-edit" class="blog-mf sect-pt4 route">
+  <div class="container">
+    <div class="row">
+
+      <div *ngIf="category | async as cat" class="col-md-8 col-sm-8 col-xs-12">
+        <div class="card">
+          <div class="card-header text-center">
+            <h4> Update Category</h4>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" novalidate (ngSubmit)="onUpdate(cat)">
+              <div class="alert alert-success" *ngIf="success">
+                {{success}}
+              </div>
+              <div class="alert alert-danger" *ngIf="errorMsg">
+                {{errorMsg}}
+              </div>
+              <div class="form-group">
+                <label>Code</label>
+                <input type="text" class="form-control" required #code="ngModel" [(ngModel)]="cat.code" name="code" [class.no-valid]="code.invalid && code.dirty" minlength="6">
+                <ul *ngIf="code.errors && code.invalid && code.dirty">
+                  <li *ngIf="code.errors.required" class="text-danger">Code is required</li>
+                  <li *ngIf="code.errors.minlength" class="text-danger">Code should contain 6 or more letters</li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" required #name="ngModel"
+                       [(ngModel)]="cat.name" name="name" [class.no-valid]="name.touched && name.invalid" minlength="6">
+                <ul *ngIf="name.errors && name.invalid && name.dirty">
+                  <li *ngIf="name.errors.required" class="text-danger">Name is required</li>
+                  <li *ngIf="name.errors.minlength" class="text-danger">Name should contain 6 or more letters</li>
+                </ul>
+              </div>
+
+              <button [disabled]="f.invalid" type="submit" class="btn btn-sm btn-success">Update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

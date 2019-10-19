@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  selector: 'app-not-found',
+  templateUrl: './not-found.component.html',
+  styleUrls: ['./not-found.component.css']
 })
-export class BlogComponent implements OnInit {
-
+export class NotFoundComponent implements OnInit {
   private body = document.getElementsByTagName('nav')[0];
   constructor() { }
 

@@ -1,0 +1,51 @@
+<section id="category-add" class="blog-mf sect-pt4 route">
+  <div class="container">
+    <div class="row">
+
+        <div class="col-md-12 col-sm-8 col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title d-inline"> Add new Category</h4>
+            <a routerLink="/admin/category" class="btn btn-primary btn-sm pull-right">Category List</a>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" novalidate (ngSubmit)="onAdd(category)">
+              <div class="alert alert-success" *ngIf="success">
+                {{success}}
+              </div>
+              <div class="alert alert-danger" *ngIf="errorMsg">
+                {{errorMsg}}
+              </div>
+              <div class="form-group">
+                <label>Code</label>
+                <input type="text" #code="ngModel" required name="code" class="form-control" [(ngModel)]="category.code"
+                       [class.no-valid]="code.invalid && (code.dirty || code.touched)" minlength="6">
+                <ul *ngIf="code.errors && code.invalid && code.dirty">
+                  <li *ngIf="code.errors.required" class="text-danger">Code is required</li>
+                  <li *ngIf="code.errors.minlength" class="text-danger">Code should contain 6 or more letters</li>
+                </ul>
+              </div>
+
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" #name="ngModel" required name="name" class="form-control" [(ngModel)]="category.name"
+                       [class.no-valid]="name.invalid && (name.dirty || name.touched)" minlength="6">
+                <ul *ngIf="name.errors && name.invalid && name.dirty">
+                  <li *ngIf="name.errors.required" class="text-danger">Name is required</li>
+                  <li *ngIf="name.errors.minlength" class="text-danger">Name should contain 6 or more letters</li>
+                </ul>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" [disabled]="f.invalid" class="btn btn-sm btn-success">Add new</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

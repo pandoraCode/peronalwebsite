@@ -803,3 +803,12 @@ footer .credits a {
     bottom: 15px;
   }
 }
+
+/* FORMS */
+
+.no-valid{
+  border: 1px solid #dc3545 !important;
+}
+.isError{
+  color: #ff3135;
+}
