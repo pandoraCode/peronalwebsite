@@ -1,14 +1,18 @@
 <!--/ Nav Star /-->
 <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand js-scroll" href="#page-top">EntusiastNerds</a>
+  <div class="container"><style type="text/css">
+    
+    flex-flow: column-reverse;
+  </style>
+   
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
             aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapse()">
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <div class="navbar-collapse collapse justify-content-end" id="navbarDefault" [class.show]="show">
+    <div class="navbar-collapse collapse " style="
+    flex-flow: column;" id="navbarDefault" [class.show]="show">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link js-scroll" routerLink="/home" routerLinkActive="active">Home</a>
