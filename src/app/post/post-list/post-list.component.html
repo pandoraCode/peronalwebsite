@@ -1,0 +1,48 @@
+<section id="post-list" class="blog-mf sect-pt4 route">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title d-inline">Post List</h4>
+            <a routerLink="/admin/post/add" class="btn btn-sm btn-primary pull-right"> New Post </a>
+          </div>
+
+          <div class="card-body">
+            <div class="alert alert-danger" *ngIf="errorMsg">
+              {{errorMsg}}
+            </div>
+            <div class="alert alert-success" *ngIf="successMsg">
+              {{successMsg}}
+            </div>
+            <table class="table table-striped table-bordered">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>title</th>
+                <th>Content</th>
+                <th>Category</th>
+                <th>Creation date</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let post of posts, let i = index">
+                <td>{{i}}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.content}}</td>
+                <td>{{post.category.name}}</td>
+                <td>{{post.createdate}}</td>
+                <td>
+                  <a class="btn btn-sm btn-success m-1" [routerLink]="['/admin/post', post.id]"><span class="fa fa-edit"></span></a>
+                  <button class="btn btn-sm btn-danger m-1"><span class="fa fa-trash"></span></button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

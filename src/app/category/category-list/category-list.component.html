@@ -1,0 +1,50 @@
+<section id="blog" class="blog-mf sect-pt4 route" style="margin-top: 5%">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-8 col-xs-12">
+        <div class="card">
+        <div class="card-header">
+          <h5 class="card-title d-inline">Category list</h5>
+          <a routerLink="/admin/category/add" class="btn btn-primary btn-sm pull-right">Add New</a>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-danger" *ngIf="errorMsg">
+            {{errorMsg}}
+          </div>
+          <div class="alert alert-success" *ngIf="successMsg">
+            {{successMsg}}
+          </div>
+
+          <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Creation Date</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let category of categories, let i = index">
+              <td> {{category.id}}</td>
+              <td> {{category.code}}</td>
+              <td> {{category.name}}</td>
+              <td> {{category.date}}</td>
+              <td>
+                <a class="btn btn-sm btn-success m-1" [routerLink]="['/admin/category', category.id]"><span class="fa fa-edit"></span></a>
+                <button (click)="deleteCategory(category.id, i)" class="btn btn-sm btn-danger m-1"><span class="fa fa-trash"></span></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+

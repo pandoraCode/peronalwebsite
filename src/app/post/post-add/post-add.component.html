@@ -1,0 +1,59 @@
+<section id="post-add" class="blog-mf sect-pt4 route">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-10 col-xs-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">New Post</h4>
+          </div>
+          <div class="card-body">
+          <form #f="ngForm">
+            <div class="row">
+              <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                <label>Code</label>
+                <input type="text" #code="ngModel" [(ngModel)]="post.code" class="form-control" required
+                       name="code" [class.no-valid]="code.invalid && (code.dirty || code.touched)" minlength="6">
+                <ul *ngIf="code.errors && code.invalid && code.touched">
+                  <li *ngIf="code.errors.required" class="text-danger">Code is required</li>
+                  <li *ngIf="code.errors.minlength" class="text-danger">Code should contain 6 or more letters</li>
+                </ul>
+              </div>
+              <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                <label>Title</label>
+                <input type="text" #title="ngModel" [(ngModel)]="post.title" class="form-control" name="title" required
+                        [class.no-valid]="title.invalid && (title.dirty || title.touched)">
+                <ul *ngIf="title.errors && title.invalid && title.touched">
+                  <li *ngIf="title.errors.required" class="text-danger">Title is required</li>
+                  <li *ngIf="title.errors.minlength" class="text-danger">Title should contain 6 or more letters</li>
+                </ul>
+              </div>
+              <div class="form-group col-md-6 col-sm-12 col-xs-12">
+                <label>Category</label>
+                <select name="category" [(ngModel)]="post.category" #category="ngModel" class="form-control" required
+                    [class.no-valid]="category.invalid && (category.dirty || category.touched)">
+                  <option *ngFor="let cat of categories | async" value="{{cat.id}}">{{cat.name}}</option>
+                </select>
+                <ul *ngIf="category.errors && category.invalid && category.touched">
+                  <li *ngIf="category.errors.required" class="text-danger">Category is required</li>
+                  <li *ngIf="category.errors.minlength" class="text-danger">Category should contain 6 or more letters</li>
+                </ul>
+              </div>
+              <div class="form-group col-md-6 col-sm-1²2 col-xs-12">
+                <label for="picture">Picture</label>
+                <input type="file" name="picture" id="picture" [(ngModel)]="post.picture" #picture="ngModel" class="form-control"
+                    [class.no-valid]="picture.invalid && (picture.dirty || picture.touched)" required>
+                <ul *ngIf="picture.errors && picture.invalid && picture.touched">
+                  <li *ngIf="picture.errors.required" class="text-danger">Picture is required</li>
+                </ul>
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <button class="btn btn-success" [disabled]="!f.form.valid">Save</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
